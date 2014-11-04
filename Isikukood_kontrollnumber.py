@@ -4,6 +4,7 @@ import random
 
 
 def sajand():
+    ''' MEES 1-1800, 3-1900, 5-2000; NAINE 2-1800, 4-1900, 6-2000 '''
     return str(random.randint(1, 6))
 
 
@@ -25,6 +26,7 @@ def genereeri_isikukood():
 
 
 def kontrollnumber(isikukood):
+    '''Arvutab isikukoodi kontrollnumbri moodul11 meetodil'''
     esimese_astme_kaalud = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
     teise_astme_kaalud = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
     esimene_jaak = moodul11(isikukood, esimese_astme_kaalud)
@@ -39,6 +41,7 @@ def kontrollnumber(isikukood):
 
 
 def moodul11(isikukood, kaalud):
+    ''' kontrollmeetod '''
     summa = 0
     for i in range(10):
         summa += int(isikukood[i]) * kaalud[i]
