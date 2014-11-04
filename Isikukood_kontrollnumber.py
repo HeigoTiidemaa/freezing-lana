@@ -10,8 +10,8 @@ def sajand():
 
 def sünniaeg():
     aasta = str(random.randint(0, 99)).zfill(2)
-    kuu = str(random.randint(0, 12)).zfill(2)
-    päev = str(random.randint(0, 28)).zfill(2)
+    kuu = str(random.randint(1, 12)).zfill(2)
+    päev = str(random.randint(1, 28)).zfill(2)
     return aasta + kuu + päev
 
 
