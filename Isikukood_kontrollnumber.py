@@ -1,24 +1,49 @@
+# -*- coding: utf-8 -*-
 __author__ = 'heigo'
+import random
 
-esimese_astme_kaalud=[1,2,3,4,5,6,7,8,9,1]
-teise_astme_kaalud=[]
+
+def sajand():
+    return str(random.randint(1, 6))
+
+
+def sünniaeg():
+    aasta = str(random.randint(0, 99)).zfill(2)
+    kuu = str(random.randint(0, 12)).zfill(2)
+    päev = str(random.randint(0, 28)).zfill(2)
+    return aasta + kuu + päev
+
+
+def järjekorra_number():
+    return str(random.randint(0, 999)).zfill(3)
+
+
+def genereeri_isikukood():
+    isikukood = sajand() + sünniaeg() + järjekorra_number()
+    isikukood = isikukood + str(kontrollnumber(isikukood))
+    return isikukood
+
+
 def kontrollnumber(isikukood):
-    esimene_jaak = moodul11(isikukood, esimese_astme_kaalud)#'esimene')
+    esimese_astme_kaalud = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+    teise_astme_kaalud = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
+    esimene_jaak = moodul11(isikukood, esimese_astme_kaalud)
     if esimene_jaak != 10:
         return esimene_jaak
-    teine_jaak = moodul11(isikukood, 'teine')
+    teine_jaak = moodul11(isikukood, teise_astme_kaalud)
 
-    if teine_jaak !=10:
+    if teine_jaak != 10:
         return teine_jaak
     else:
         return 0
 
-def moodul11(isikukood, aste):
-    if aste == 'esimene':
-        kontrollnumbri_summa= (1*int(isikukood[0])+2*int(isikukood[1])+3*int(isikukood[2])+4*int(isikukood[3])+5*int(isikukood[4])
-                +6*int(isikukood[5])+7*int(isikukood[6])+8*int(isikukood[7])+9*int(isikukood[8])+1*int(isikukood[9]))
-        return int(kontrollnumbri_summa) % 11
-    else:
-        kontrollnumbri_summa= (3*int(isikukood[0])+4*int(isikukood[1])+5*int(isikukood[2])+6*int(isikukood[3])+7*int(isikukood[4])
-                +8*int(isikukood[5])+9*int(isikukood[6])+1*int(isikukood[7])+2*int(isikukood[8])+3*int(isikukood[9]))
-        return int(kontrollnumbri_summa) % 11   
+
+def moodul11(isikukood, kaalud):
+    summa = 0
+    for i in range(10):
+        summa += int(isikukood[i]) * kaalud[i]
+    return summa % 11
+
+
+if __name__ == '__main__':
+    print(genereeri_isikukood())
