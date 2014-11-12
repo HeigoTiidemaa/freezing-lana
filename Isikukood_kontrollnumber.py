@@ -10,7 +10,7 @@ def sajand():
 
 def sünniaeg():
     aasta = str(random.randint(0, 99)).zfill(2)
-    kuu = str(random.randint(1, 12)).zfill(2)
+    kuu = str(random.randint(1, 1)).zfill(2)
     päev = str(random.randint(1, 28)).zfill(2)
     return aasta + kuu + päev
 
@@ -47,6 +47,9 @@ def moodul11(isikukood, kaalud):
         summa += int(isikukood[i]) * kaalud[i]
     return summa % 11
 
+def _minu_peidetud():
+    pass
 
 if __name__ == '__main__':
     print(genereeri_isikukood())
+
