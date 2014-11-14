@@ -1,2 +1,0 @@
-
-import Isikukood_kontrollnumber
